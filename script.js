@@ -1,36 +1,35 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
     const rollButton = document.getElementById("rollButton");
     const diceType = document.getElementById("diceType");
     const diceQuantity = document.getElementById("diceQuantity");
     const resultsContainer = document.getElementById("results");
     const themeToggle = document.getElementById("themeToggle");
-
     let isDarkMode = false;
 
     // 🎲 Função para rolar os dados
-    rollButton.addEventListener("click", () => {
+    rollButton.addEventListener("click", function () {
         const sides = parseInt(diceType.value);
         const quantity = parseInt(diceQuantity.value);
         resultsContainer.innerHTML = "";
 
         for (let i = 0; i < quantity; i++) {
             const resultDiv = document.createElement("div");
-            resultDiv.classList.add("result", "rolling"); // Adiciona a animação
+            resultDiv.classList.add("result", "rolling"); 
             resultsContainer.appendChild(resultDiv);
 
-            // Aguarda 1 segundo antes de mostrar o resultado real
+            // Aguarda 1 segundo antes de mostrar o número real
             setTimeout(() => {
                 const roll = Math.floor(Math.random() * sides) + 1;
                 resultDiv.textContent = roll;
-                resultDiv.classList.remove("rolling"); // Remove a animação quando o número aparece
+                resultDiv.classList.remove("rolling");
             }, 1000);
         }
     });
 
-    // 🌙 Alternar entre modo claro e escuro
-    themeToggle.addEventListener("click", () => {
-        isDarkMode = !isDarkMode;
+    // 🌙 Alternar modo escuro/claro
+    themeToggle.addEventListener("click", function () {
         document.body.classList.toggle("dark-mode");
+        isDarkMode = !isDarkMode;
         themeToggle.textContent = isDarkMode ? "☀️ Modo Claro" : "🌙 Modo Escuro";
     });
 });
