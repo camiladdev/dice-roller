@@ -1,29 +1,39 @@
 // Seleciona os elementos do HTML
 
-const dice = document.getElementById("dice");
 const rollButton = document.getElementById("rollButton");
+const diceType = document.getElementById("diceType");
+const diceQuantity = document.getElementById("diceQuantity");
+const resultsContainer = document.getElementById("results");
+const themeToggle = document.getElementById("themeToggle");
+let isDarkMode = false;
 
-// Função para simular a rolagem de um dado de 20 lados
+// Função rolar os dados
 
-function rollDice() {
-    rollButton.disabled = true;
+rollButton.addEventListener("click", () => {
+    const sides = parseInt(diceType.value);
+    const quantity = parseInt(diceQuantity.value);
+    resultsContainer.innerHTML = "";
 
-    let counter = 0;
-    const interval = setInterval(() => {
-        const randomFace = Math.floor(Math.random() * 20) + 1;
-        dice.textContent = randomFace;
+    for (let i = 0; i < quantity; i++) {
+        const resultDiv = document.createElement("div");
+        resultDiv.classList.add("result", "rolling"); // Adiciona a animação
+        resultsContainer.appendChild(resultDiv);
 
-        counter++;
-        if (counter === 10) {
-            clearInterval(interval);
-            const finalFace = Math.floor(Math.random() * 20) + 1;
-            dice.textContent = finalFace;
-            rollButton.disabled = false;
-        }
-    }, 100);
-}
+        // Aguarda 1 segundo antes de mostrar o resultado real
+        setTimeout(() => {
+            const roll = Math.floor(Math.random() * sides) + 1;
+            resultDiv.textContent = roll;
+            resultDiv.classList.remove("rolling"); // Remove a animação quando o número aparece
+        }, 1000);
+    }
+});
 
-rollButton.addEventListener("click", rollDice);
+// 🌙 Alternar entre modo claro e escuro
+themeToggle.addEventListener("click", () => {
+    isDarkMode = !isDarkMode;
+    document.body.classList.toggle("dark-mode");
+    themeToggle.textContent = isDarkMode ? "☀️ Modo Claro" : "🌙 Modo Escuro";
+});
 
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./service-worker.js")
