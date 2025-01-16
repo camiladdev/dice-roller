@@ -1,4 +1,4 @@
-/* 🌈 Variáveis de cores para temas */
+/* 🌈 Modo Claro e Escuro */
 :root {
     --bg-color: #ffffff;
     --text-color: #000000;
@@ -43,7 +43,7 @@ header {
 }
 
 #themeToggle {
-    background: linear-gradient(135deg, #ff9800, #e68900);
+    background: var(--button-bg);
     color: white;
     font-weight: bold;
     padding: 10px 18px;
@@ -54,7 +54,7 @@ header {
 }
 
 #themeToggle:hover {
-    background: linear-gradient(135deg, #e68900, #d97700);
+    background: var(--button-hover);
 }
 
 #themeToggle:active {
@@ -81,9 +81,9 @@ select, input, button {
     max-width: 300px;
 }
 
-/* 🎲 Estilo dos botões */
+/* 🎲 Botões */
 button {
-    background: linear-gradient(135deg, #1e88e5, #1565c0);
+    background: var(--button-bg);
     color: white;
     border: none;
     cursor: pointer;
@@ -96,7 +96,7 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(135deg, #1565c0, #0d47a1);
+    background: var(--button-hover);
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -112,19 +112,6 @@ button:active {
     margin-top: 20px;
 }
 
-/* 🎲 Estilo dos dados */
-.result {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--header-bg);
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 5px;
-}
-
 /* 🎲 Animação de rotação */
 @keyframes rollDice {
     0% { transform: rotate(0deg); }
@@ -138,26 +125,22 @@ button:active {
     animation: rollDice 1s infinite linear;
 }
 
-/* 📱 Responsividade para telas menores */
+.result {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--header-bg);
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+/* 📱 Responsividade */
 @media (max-width: 480px) {
     #app {
         width: 100%;
         padding: 10px;
-    }
-
-    header {
-        font-size: 1.2rem;
-    }
-
-    select, input, button {
-        font-size: 1rem;
-        padding: 8px;
-        width: 90%;
-    }
-
-    .result {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
     }
 }
