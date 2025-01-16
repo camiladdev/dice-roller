@@ -8,18 +8,40 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de D20</title>
+    <title>Dice Roller 🎲</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <div id="app">
+        <header>
+            <h1>🎲 Dice Roller</h1>
+            <button id="themeToggle">🌙 Modo Escuro</button>
+        </header>
 
-    <h1>Simulador de D20</h1>
+        <div id="controls">
+            <label for="diceType">Escolha o dado:</label>label>
+            <select id="diceType">
+                <option value="4">D4</option>
+                <option value="6">D6</option>
+                <option value="8">D8</option>
+                <option value="10">D10</option>
+                <option value="12">D12</option>
+                <option value="20" selected>D20</option>
+                <option value="30">D30</option>
+                <option value="100">D100</option>
+            </select>
 
-    <div class="dice" id="dice">?</div>
-    <button id="rollButton">Rolar o Dado</button>
+            <label for = "diceQuantity">Quantidade de dados:</label>
+            <input type="number" id="diceQuantity" min="1" max="10" value="1">
 
+            <button id="rollButton">🎲 Rolar Dados</button>
+        </div>
+
+        <div id="results"></div>  
+    </div>
 </body>
+    
 <script src="script.js"></script>
 
 </html>
